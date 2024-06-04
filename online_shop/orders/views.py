@@ -7,6 +7,7 @@ from .models import OrderItem
 from .tasks import order_created
 
 
+# Создание заказа на основе корзины
 @login_required
 def order_create(request):
     cart = Cart(request)

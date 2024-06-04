@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.utils import timezone
 from django.views.decorators.http import require_POST
 
@@ -6,6 +6,7 @@ from .forms import CouponApplyForm
 from .models import Coupon
 
 
+# Функция представления, приеняющая введенный купон
 @require_POST
 def coupon_apply(request):
     now = timezone.now()

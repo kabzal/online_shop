@@ -5,6 +5,7 @@ from shop.models import Product
 from coupons.models import Coupon
 
 
+# Класс для создания корзин
 class Cart:
     def __init__(self, request):
         """
@@ -61,13 +62,16 @@ class Cart:
     def __len__(self):
         return sum(item['quantity'] for item in self.cart.values())
 
+    # Получить полную стоимость корзины
     def get_total_price(self):
         return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
 
+    # Очистит корзину
     def clear(self):
         del self.session[settings.CART_SESSION_ID]
         self.save()
 
+    # Свойство: купон
     @property
     def coupon(self):
         if self.coupon_id:
@@ -77,11 +81,13 @@ class Cart:
                 pass
         return None
 
+    # Вычисление скидки по купону
     def get_discount(self):
         if self.coupon:
             return (self.coupon.discount / Decimal(100)) \
                     * self.get_total_price()
         return Decimal(0)
 
+    # Получение полной стоимости корзины с учетом скидки
     def get_total_price_after_discount(self):
         return self.get_total_price() - self.get_discount()
