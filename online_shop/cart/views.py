@@ -8,6 +8,7 @@ from .cart import Cart
 from .forms import CartAddProductForm
 
 
+# Добавление товара в корзину
 @login_required
 @require_POST
 def cart_add(request, product_id):
@@ -22,6 +23,7 @@ def cart_add(request, product_id):
     return redirect('cart:cart_detail')
 
 
+# Удаление товара из корзины
 @login_required
 @require_POST
 def cart_remove(request, product_id):
@@ -31,6 +33,7 @@ def cart_remove(request, product_id):
     return redirect('cart:cart_detail')
 
 
+# Просмотр корзины
 @login_required
 def cart_detail(request):
     cart = Cart(request)

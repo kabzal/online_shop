@@ -10,6 +10,7 @@ from django.views.generic import CreateView, UpdateView
 from .forms import LoginUserForm, RegisterUserForm, ProfileUserForm, UserPasswordChangeForm
 
 
+# Класс представления для авторизации пользователей
 class LoginUser(LoginView):
     template_name = 'users/login.html'
     form_class = LoginUserForm
@@ -18,12 +19,14 @@ class LoginUser(LoginView):
         return reverse_lazy('shop:product_list')
 
 
+# Класс представления для регистрации пользователей
 class RegisterUser(CreateView):
     form_class = RegisterUserForm
     template_name = 'users/register.html'
     success_url = reverse_lazy('users:login')
 
 
+# Класс представления для просмотра профиля
 class ProfileUser(LoginRequiredMixin, UpdateView):
     model = get_user_model()
     form_class = ProfileUserForm
@@ -36,6 +39,7 @@ class ProfileUser(LoginRequiredMixin, UpdateView):
         return self.request.user
 
 
+# Класс представления для смены пароля
 class UserPasswordChange(PasswordChangeView):
     form_class = UserPasswordChangeForm
     template_name = 'users/password_change_form.html'
