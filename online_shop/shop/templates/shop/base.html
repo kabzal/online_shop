@@ -6,18 +6,20 @@
     <title>{% block title %}My shop{% endblock %}</title>
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <a href="/" class="logo">My shop</a>
-    </div>
-    <div>
-        {% if user.is_authenticated %}
-            <a href="{% url 'users:profile' %}">{{ user.username }}</a> | <form method='post' action="{% url 'users:logout' %}">
-            {% csrf_token %}
-            <button type="submit">Выйти</button></form>
-        {% else %}
-            <a href="{% url 'users:login' %}">Войти</a> | <a href="{% url 'users:register' %}">Регистрация</a>
-        {% endif %}
+    <div class="header-block">
+        <div id="header">
+            <a href="/" class="logo">Магазин LC</a>
+        </div>
+        <div class="auth-block">
+            {% if user.is_authenticated %}
+                <a href="{% url 'users:profile' %}">{{ user.username }}</a><span> | </span><form method='post' action="{% url 'users:logout' %}">{% csrf_token %}<button type="submit">Выйти</button></form>
+            {% else %}
+                <a href="{% url 'users:login' %}">Войти</a> |
+                <a href="{% url 'users:register' %}">Регистрация</a>
+            {% endif %}
+        </div>
     </div>
     <div id="subheader">
         <div class="cart">

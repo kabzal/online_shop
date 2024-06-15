@@ -85,14 +85,9 @@ td input[type="submit"] {
     padding:4px 10px;
 }
 
-form p label, form p input {
-    float:left;
-    clear:both;
-}
-
 form p label {
-    font-size:14px;
-    padding-bottom:4px;
+    font-size: 14px;
+    padding-bottom: 4px;
 }
 
 form p input {
@@ -131,10 +126,8 @@ ul.errorlist {
 
 #header .logo {
     font-family: 'Ubuntu', sans-serif;
-    float:left;
     color:#333;
     font-size:22px;
-    margin-right:10%;
 }
 
 #subheader .cart {
@@ -223,6 +216,26 @@ ul.errorlist {
 
 .order-form {
     float:left;
+}
+
+.order-form p {
+    width: 300px;
+}
+
+.login-form p {
+    width: 300px;
+}
+
+.profile-form p {
+    width: 300px;
+}
+
+.password-change-form p {
+    width: 300px;
+}
+
+.register p {
+    width: 300px;
 }
 
 .order-info {
@@ -327,4 +340,39 @@ form div.field {
     background:#efefef;
     color:#666;
     border-radius:4px;
+}
+
+.header-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px 0 0;
+}
+
+.auth-block {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 15%;
+    height: 100%;
+    padding:10px;
+    margin-right: 70px;
+    overflow: auto;
+}
+
+.auth-block button {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-size: 15px;
+    background-color: transparent;
+    color:#5993bb;
+}
+
+.auth-block button:hover {
+    color:#77b6e2;
+}
+
+.auth-block form {
+    width: auto;
 }
